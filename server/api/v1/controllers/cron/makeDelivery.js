@@ -19,7 +19,7 @@ const fetchWayBill = async (name) => {
     const response = await axios.get(url, { headers: { Authorization: DELHIVERY_AUTH } });
     return response.data.status === 200 ? response.data.wayBill : null;
   } catch (error) {
-    console.error("❌ Failed to fetch waybill:", error.response?.data || error.message);
+    console.error("❌ Failed to fetch waybill:", error.response.data || error.message);
     return null;
   }
 };
@@ -37,7 +37,7 @@ const createDelhiveryOrder = async (shippingObject) => {
     });
     return response.data.status === 200;
   } catch (error) {
-    console.error("❌ Order creation failed:", error.response?.data || error.message);
+    console.error("❌ Order creation failed:", error.response.data || error.message);
     return false;
   }
 };

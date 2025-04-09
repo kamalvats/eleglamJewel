@@ -32,7 +32,7 @@ const trackShipment = async (wayBill) => {
     }
     return null;
   } catch (error) {
-    console.error(`❌ Tracking failed for waybill ${wayBill}:`, error.respons?.data || error.message);
+    console.error(`❌ Tracking failed for waybill ${wayBill}:`, error.response.data || error.message);
     return null;
   }
 };
