@@ -1,0 +1,44 @@
+{
+  "port": 1990,
+  "hostAddress": "172.16.0.118:1990",
+  "websocketAddress": "ws://172.16.6.96:1990",
+  "databaseHost": "127.0.0.1",
+  "databasePort": "27017",
+  "databaseName": "ecommerce",
+  "jwtsecret": "nodejwt",
+  "jwtresetsecret": "nodejwt",
+ "nodemailer": {
+    "service": "gmail",
+    "email": "mobiloitte.node@gmail.com",
+    "password": "wdbakhorlxmmqrhg"
+  },
+  "jwtOptions": {
+    "expiresIn": "24h"
+  },
+  "encryptionKey": "mobiloitte_key",
+  "swaggerDefinition": {
+    "info": {
+      "title": "ecommerce-node",
+      "version": "2.0",
+      "description": "ecommerce-node - API Docs"
+    },
+    "basePath": "/api/v1",
+    "securityDefinitions": {
+      "tokenauth": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "cloudinary": {
+    "cloud_name": "dx17mttye",
+    "api_key": "348828817168638",
+    "api_secret": "nn0OkIZb0cqIby7M117u9TacdJk"
+  },
+  "supportEmail":"support@stringarc8.io",
+  "razorPayKeyId":"rzp_test_OZRUHCn3peZWQG",
+  "razorPaySecret":"kiOCPjORYpkHDu5KYwAYULwk"
+  
+ 
+}
