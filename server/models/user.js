@@ -174,8 +174,6 @@ module.exports = Mongoose.model("user", userModel);
       email: "support@mailinator.com",
       dateOfBirth: "13/01/2003",
       password: bcrypt.hashSync("Admin@123"),
-      address: "Delhi, India",
-      wallet: "Eyp3rpdtVbnzbhFWMdHrANrijpBaLVQf7qLB67BDinXv",
       otpVerified: true,
       profilePic:
         "https://res.cloudinary.com/mobiloitte-testing1/image/upload/v1639781336/q1spiih52uq9oh2wsop4.png",
