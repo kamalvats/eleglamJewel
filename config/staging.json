@@ -38,7 +38,9 @@
   },
   "supportEmail":"support@stringarc8.io",
   "razorPayKeyId":"rzp_test_OZRUHCn3peZWQG",
-  "razorPaySecret":"kiOCPjORYpkHDu5KYwAYULwk"
+  "razorPaySecret":"kiOCPjORYpkHDu5KYwAYULwk",
+  "delhiverySecret":"c44268c7db21ca113aed20c43a2ae7d5ea216b01",
+  "delhiveryUrl":"https://track.delhivery.com"
   
  
 }

@@ -26,13 +26,20 @@ const trackShipment = async (wayBill) => {
 
     const trackingData = response.data;
 
-    if (trackingData && trackingData.ShipmentData && trackingData.ShipmentData.length > 0) {
+    if (
+      trackingData &&
+      trackingData.ShipmentData &&
+      trackingData.ShipmentData.length > 0
+    ) {
       const shipment = trackingData.ShipmentData[0];
       return shipment.Status.Status || null;
     }
     return null;
   } catch (error) {
-    console.error(`❌ Tracking failed for waybill ${wayBill}:`, error.response.data || error.message);
+    console.error(
+      `❌ Tracking failed for waybill ${wayBill}:`,
+      error.response.data || error.message
+    );
     return null;
   }
 };
@@ -42,26 +49,40 @@ const trackShipment = async (wayBill) => {
  */
 const processTransactions = async () => {
   try {
-    const transactions = await findTransactions({ orderCreated: true, status: "PENDING" });
+    console.log("🚀 Delhivery Order Tracking Cron Started!");
+    const transactions = await findTransactions({
+      orderCreated: true,
+      status: "PENDING",
+    });
 
     if (transactions.length === 0) return;
 
     for (const trx of transactions) {
       if (!trx.wayBill) {
-        console.warn(`⚠️ Skipping Transaction ID: ${trx._id} - Missing waybill`);
+        console.warn(
+          `⚠️ Skipping Transaction ID: ${trx._id} - Missing waybill`
+        );
         continue;
       }
 
       const orderStatus = await trackShipment(trx.wayBill);
 
       if (orderStatus) {
-        await updateTransaction({ _id: trx._id }, { deliveryStatus: orderStatus });
-        if(orderStatus=="Delivered"){
-            await updateTransaction({ _id: trx._id }, { status: "COMPLETED",paymentStatus:"COMPLETED" });
-        }else if(orderStatus=="RTO"){
-            await updateTransaction({ _id: trx._id }, { status: "CANCELLED" });
+        await updateTransaction(
+          { _id: trx._id },
+          { deliveryStatus: orderStatus }
+        );
+        if (orderStatus == "Delivered") {
+          await updateTransaction(
+            { _id: trx._id },
+            { status: "COMPLETED", paymentStatus: "COMPLETED" }
+          );
+        } else if (orderStatus == "RTO") {
+          await updateTransaction({ _id: trx._id }, { status: "CANCELLED" });
         }
-        console.log(`✅ Updated Transaction ID: ${trx._id} - New Status: ${orderStatus}`);
+        console.log(
+          `✅ Updated Transaction ID: ${trx._id} - New Status: ${orderStatus}`
+        );
       } else {
         console.warn(`⚠️ No status update for Transaction ID: ${trx._id}`);
       }
@@ -73,4 +94,3 @@ const processTransactions = async () => {
 
 // Run the cron job every 10 seconds
 cron.schedule("*/1 * * * *", processTransactions);
-console.log("🚀 Delhivery Order Tracking Cron Started!");
