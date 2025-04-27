@@ -20,6 +20,7 @@ export default Express.Router()
   .get("/listProductAll", controller.listProductAll)
   .post("/createPaymentOrder", controller.createPaymentOrder)
   .post("/cancelOrder", controller.cancelOrder)
+  .post("/returnOrder",controller.returnOrder)
   .use(upload.uploadFile)
   .put("/editProduct", controller.editProduct)
   .post("/addProduct", controller.addProduct);

@@ -21,28 +21,36 @@ var transactionModel = new Schema(
     totalDiscount: {
       type: Number,
     },
-    products: [{
-      productId:{
-        type: Mongoose.Types.ObjectId,
-        ref:"product"
+    products: [
+      {
+        productId: {
+          type: Mongoose.Types.ObjectId,
+          ref: "product",
+        },
+        quantity: { type: Number },
+        price: { type: Number },
+        discountPrice: { type: Number },
+        // status:{type:String,default:}
       },
-      quantity:{type:Number},
-      price:{type:Number},
-      discountPrice:{type:Number},
-      // status:{type:String,default:}
-    }
     ],
     status: {
       type: String,
-      enum :["PENDING","COMPLETED","CANCELLED"],
+      enum: ["PENDING", "COMPLETED", "CANCELLED"],
       default: ticketStatus.PENDING,
     },
-    paymentStatus:{type:String, default:"PENDING"},
-    paymentType:{type:String,enum:["COD","Pre-Paid"]},
-    orderCreated:{type:Boolean,default:false},
-    address:{type:Object},
-    deliveryStatus :{type:String,default:"Ordered"},
-    wayBill:{type:String},
+    paymentStatus: { type: String, default: "PENDING" },
+    paymentType: { type: String, enum: ["COD", "Pre-Paid"] },
+    orderCreated: { type: Boolean, default: false },
+    address: { type: Object },
+    deliveryStatus: { type: String, default: "Ordered" },
+    wayBill: { type: String },
+    deliveredDate: {
+      type: Date,
+    },
+    isReturned: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );

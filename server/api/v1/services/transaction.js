@@ -40,6 +40,11 @@ const transactionServices = {
 
     // Base pipeline with better product population
     let query = [
+      {
+        $match: {
+          paymentStatus: { $ne: "FAILED" },
+        }
+      },
       // Lookup for user data
       {
         $lookup: {

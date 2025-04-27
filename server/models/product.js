@@ -47,7 +47,11 @@ var productSchema = new schema({
     quantity:{
         type:Number,
         default:1
-    }
+    },
+    stockAvailable:{
+        type:Boolean,
+        default:true
+    },
     // discount:{
     //     type:Boolean,
     //     default:true

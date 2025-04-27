@@ -1,4 +1,4 @@
-import cron from "node-cron";
+import { CronJob } from "cron";
 import axios from "axios";
 import config from "config";
 import { transactionServices } from "../../services/transaction";
@@ -32,36 +32,34 @@ const trackShipment = async (wayBill) => {
       trackingData.ShipmentData.length > 0
     ) {
       const shipment = trackingData.ShipmentData[0];
-      return shipment.Status.Status || null;
+      return shipment.Shipment.Status.Status || null;
     }
     return null;
   } catch (error) {
-    console.error(
-      `❌ Tracking failed for waybill ${wayBill}:`,
-      error.response.data || error.message
-    );
+    console.error(`❌ Tracking failed for waybill ${wayBill}:`, error);
     return null;
   }
 };
 
-/**
- * Processes transactions and updates their order status based on Delhivery tracking.
- */
-const processTransactions = async () => {
+const cronJobMain = new CronJob('*/5 * * * *', async function () {
   try {
     console.log("🚀 Delhivery Order Tracking Cron Started!");
     const transactions = await findTransactions({
       orderCreated: true,
-      status: "PENDING",
+      $or: [{ isReturned: true }, { status: "PENDING" }]
     });
 
-    if (transactions.length === 0) return;
+    if (transactions.length === 0) {
+      cronJobMain.start();
+    } else {
+      cronJobMain.stop();
+    }
 
-    for (const trx of transactions) {
+    for (let i = 0; i < transactions.length; i++) {
+      const trx = transactions[i];
+
       if (!trx.wayBill) {
-        console.warn(
-          `⚠️ Skipping Transaction ID: ${trx._id} - Missing waybill`
-        );
+        console.warn(`⚠️ Skipping Transaction ID: ${trx._id} - Missing waybill`);
         continue;
       }
 
@@ -72,25 +70,38 @@ const processTransactions = async () => {
           { _id: trx._id },
           { deliveryStatus: orderStatus }
         );
-        if (orderStatus == "Delivered") {
+
+        if (orderStatus === "Delivered") {
           await updateTransaction(
             { _id: trx._id },
-            { status: "COMPLETED", paymentStatus: "COMPLETED" }
+            {
+              status: "COMPLETED",
+              paymentStatus: "COMPLETED",
+              deliveredDate: new Date()
+            }
           );
-        } else if (orderStatus == "RTO") {
-          await updateTransaction({ _id: trx._id }, { status: "CANCELLED" });
+        } else if (orderStatus === "RTO") {
+          await updateTransaction(
+            { _id: trx._id },
+            { status: "CANCELLED" }
+          );
         }
-        console.log(
-          `✅ Updated Transaction ID: ${trx._id} - New Status: ${orderStatus}`
-        );
+
+        console.log(`✅ Updated Transaction ID: ${trx._id} - New Status: ${orderStatus}`);
       } else {
         console.warn(`⚠️ No status update for Transaction ID: ${trx._id}`);
       }
+
+      if (i === transactions.length - 1) {
+        cronJobMain.start();
+      }
     }
+
+    cronJobMain.start();
   } catch (error) {
+    cronJobMain.start();
     console.error("❌ Error processing transactions:", error);
   }
-};
+});
 
-// Run the cron job every 10 seconds
-cron.schedule("*/1 * * * *", processTransactions);
+cronJobMain.start();

@@ -36,6 +36,9 @@ const {
   getTransaction,
 } = transactionServices;
 import crypto from "crypto";
+import { wareHouseServices } from "../../services/warehouse";
+import axios from "axios";
+const { findWareHouse } = wareHouseServices;
 export class ProductController {
   /**
    * @swagger
@@ -484,20 +487,20 @@ export class ProductController {
    *       - name: productTitle
    *         description: productTitle
    *         in: formData
-   *         required: true
+   *         required: false
    *       - name: productDescription
    *         description: productDescription
    *         in: formData
-   *         required: true
+   *         required: false
    *       - name: images
    *         description: images
    *         in: formData
    *         type: array
-   *         required: true
+   *         required: false
    *       - name: category
    *         description: category
    *         in: formData
-   *         required: true
+   *         required: false
    *       - name: productDetails
    *         description: productDetails
    *         in: formData
@@ -542,6 +545,10 @@ export class ProductController {
    *         description: quantity
    *         in: formData
    *         required: false
+   *       - name: stockAvailable
+   *         description: stockAvailable
+   *         in: formData
+   *         required: false
    *     responses:
    *       200:
    *         description: Returns success message
@@ -562,6 +569,7 @@ export class ProductController {
       freeDelivery: Joi.boolean().optional(),
       discount: Joi.boolean().optional(),
       quantity: Joi.number().optional(),
+      stockAvailable: Joi.boolean().optional(),
     };
     try {
       const validatedBody = await Joi.validate(req.body, validationSchema);
@@ -918,40 +926,42 @@ export class ProductController {
     try {
       const secret = config.get("razorPaySecret");
       const signature = req.headers["x-razorpay-signature"];
-      const body = JSON.stringify(req.body);
-      console.log("lk;fl;skdflkslfksl;fklskfldskfl", body);
-      const transaction = await findTransactions({ orderId: body.order_id });
+      const body = req.body;
+      const transaction = await getTransaction({ orderId: body.payload.payment.entity.order_id });
+      console.log("lk;fl;skdflkslfksl;fklskfldskfl", transaction);
       if (transaction) {
         const expectedSignature = crypto
           .createHmac("sha256", secret)
-          .update(body)
+          .update(JSON.stringify(body))
           .digest("hex");
-        if (expectedSignature !== signature) {
+        if (expectedSignature == signature) {
           const event = req.body;
           console.log("000000000000000000000000000", event);
           console.log("Received webhook event:", event.event);
-          if (event.event === "payment.captured") {
+          if (event.event === "order.paid") {
             const payment = event.payload.payment.entity;
-            await updateTransaction(transaction._id, {
+            await updateTransaction({_id:transaction._id}, {
               paymentStatus: "COMPLETED",
               receipt: payment.receipt,
+              status: "PENDING",
             });
             console.log({
               success: true,
               message: "Transaction completed successfully.",
             });
-          }
-
-          if (event.event === "payment.failed") {
+          }else if(event.event =="payment.failed"){
             const payment = event.payload.payment.entity;
-            await updateTransaction(transaction._id, {
+            await updateTransaction({_id:transaction._id}, {
               paymentStatus: "FAILED",
+              status: "CANCELLED",
             });
             console.log({
               success: true,
               message: "Transaction marked as failed.",
             });
           }
+
+           
         } else {
           console.log({ error: "Invalid webhook signature" });
         }
@@ -1150,14 +1160,14 @@ export class ProductController {
       if (userResult.userType == userType.USER) {
         query.userId = userResult._id;
       }
-      let trx = await findTransactions(query);
+      let trx = await getTransaction(query);
       if (!trx) {
         throw apiError.notFound(responseMessage.DATA_NOT_FOUND);
       }
       if (trx.orderCreated == true) {
         const response = await axios.post(
-          `${url}/edit`, // API endpoint for cancellation
-          { waybill: trx.waybill, cancellation: "true" }, // Request body
+          `${config.get("delhiveryUrl")}/api/p/edit`, // API endpoint for cancellation
+          { waybill: trx.wayBill, cancellation: "true" }, // Request body
           {
             headers: {
               Authorization: `Token ${config.get("delhiverySecret")}`,
@@ -1180,6 +1190,133 @@ export class ProductController {
       return next(error);
     }
   }
+
+  /**
+   * @swagger
+   * /product/returnOrder:
+   *   post:
+   *     tags:
+   *       - PRODUCT
+   *     description: returnOrder
+   *     produces:
+   *       - application/json
+   *     parameters:
+   *       - name: token
+   *         description: token
+   *         in: header
+   *         required: true
+   *       - name: _id
+   *         description: _id
+   *         in: formData
+   *         required: true
+   *     responses:
+   *       200:
+   *         description: Returns success message
+   */
+  async returnOrder(req, res, next) {
+    const validationSchema = {
+      _id: Joi.string().required(),
+    };
+  
+    try {
+      const validatedBody = await Joi.validate(req.body, validationSchema);
+  
+      const userResult = await findUser({
+        _id: req.userId,
+        status: status.ACTIVE,
+      });
+  
+      if (!userResult) {
+        throw apiError.unauthorized(responseMessage.UNAUTHORIZED);
+      }
+  
+      const sevenDaysAgo = new Date();
+      sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+  
+      const trx = await findTransactions({
+        _id: validatedBody._id,
+        status: status.COMPLETED,
+        isReturned: false,
+        deliveredDate: { $gte: sevenDaysAgo },
+        userId: userResult._id,
+      });
+  
+      if (!trx) {
+        throw apiError.notFound("Order not eligible for return.");
+      }
+      let wareHouse = await findWareHouse({});
+      if(!wareHouse){
+        throw apiError.notFound("No warehouse found");
+      }
+  
+      const pickupLocation = {
+        add: trx.returnWarehouseAddress || "abcd", // warehouse address
+        city: trx.returnWarehouseCity || "Bangalore",
+        country: "India",
+        name: trx.pickupLocation || "Client's warehouse",
+        phone: trx.returnWarehousePhone || "1111111111",
+        pin: trx.returnWarehousePincode || "560002",
+      };
+  
+      const shipment = {
+        waybill: trx.waybill || "",
+        order: `RET-${trx._id}`,
+        payment_mode: "Pickup",
+        return_add: pickupLocation.add,
+        return_city: pickupLocation.city,
+        return_country: pickupLocation.country,
+        return_name: pickupLocation.name,
+        return_phone: pickupLocation.phone,
+        return_pin: pickupLocation.pin,
+        return_state: trx.returnWarehouseState || "Karnataka",
+  
+      };
+  
+      const payload = {
+        format: "json",
+        data: JSON.stringify({
+          pickup_location: pickupLocation,
+          shipments: [shipment],
+        }),
+      };
+  
+      const delhiveryResponse = await axios.post(
+        `${config.get("delhiveryUrl")}/api/cmu/create.json`,
+        new URLSearchParams(payload).toString(),
+        {
+          headers: {
+            Authorization: `Token ${config.get("delhiverySecret")}`,
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+  
+      if (
+        !delhiveryResponse ||
+        delhiveryResponse.status !== 200 ||
+        delhiveryResponse.data.success !== true
+      ) {
+        throw new Error(
+          `Delhivery RVP Failed: ${
+            delhiveryResponse.data.error || "Unknown error"
+          }`
+        );
+      }
+  
+      // Mark as returned
+      const updatedTrx = await updateTransaction(
+        { _id: validatedBody._id },
+        { isReturned: true }
+      );
+  
+      return res.json(
+        new response(updatedTrx, "Reverse pickup initiated successfully")
+      );
+    } catch (error) {
+      return next(error);
+    }
+  }
+  
 }
 export default new ProductController();
 function generateTrxId(prefix = "Ord") {

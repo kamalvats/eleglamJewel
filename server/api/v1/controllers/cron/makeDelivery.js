@@ -1,138 +1,137 @@
-import cron from "node-cron";
+import { CronJob } from "cron";
 import axios from "axios";
-import config from "config"; // Ensure config is imported
+import config from "config";
+import qs from "qs";
 import { transactionServices } from "../../services/transaction";
-import { userServices } from "../../services/user";
-const { findTransactions, updateTransaction } = transactionServices;
-const { findUser } = userServices;
 import { wareHouseServices } from "../../services/warehouse";
+
+const { findTransactions, updateTransaction } = transactionServices;
 const { findWareHouse } = wareHouseServices;
-import { productServices } from "../../services/product";
-const { findProduct, updateProduct } = productServices;
+
 const DELHIVERY_API_URL = config.get("delhiveryUrl");
 const DELHIVERY_AUTH = `Token ${config.get("delhiverySecret")}`;
 
-// Function to fetch waybill number if needed
-const fetchWayBill = async (name) => {
+/**
+ * Fetches a waybill number from Delhivery for a given client name.
+ * @param {string} clientName - The registered client name.
+ * @returns {string|null} - Waybill number or null if failed.
+ */
+const fetchWayBill = async (clientName) => {
   try {
-    const url = `${DELHIVERY_API_URL}?cl=${name}&count=1`;
+    const url = `${DELHIVERY_API_URL}/waybill/api/bulk/json/?cl=${clientName}&token=${config.get("delhiverySecret")}&count=1`;
     const response = await axios.get(url, {
       headers: { Authorization: DELHIVERY_AUTH },
     });
-    return response.data.status === 200 ? response.data.wayBill : null;
+    return response.data || null;
   } catch (error) {
-    console.error(
-      "❌ Failed to fetch waybill:",
-      error.response.data || error.message
-    );
+    console.error("❌ Failed to fetch waybill:", error);
     return null;
   }
 };
 
-// Function to create a Delhivery order
+/**
+ * Creates an order in Delhivery system.
+ * @param {Object} shippingObject - The shipping payload.
+ * @returns {boolean} - True if order created, else false.
+ */
 const createDelhiveryOrder = async (shippingObject) => {
   try {
-    const payload = { format: "json", data: JSON.stringify(shippingObject) };
+    const payload = qs.stringify({
+      format: "json",
+      data: JSON.stringify(shippingObject),
+    });
+
     const response = await axios.post(
       `${DELHIVERY_API_URL}/api/cmu/create.json`,
       payload,
       {
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
           Accept: "application/json",
           Authorization: DELHIVERY_AUTH,
         },
       }
     );
-    return response.data.status === 200;
+
+    console.log("🚚 Delhivery Order Response:", response.data);
+    return response.data.success === true;
   } catch (error) {
-    console.error(
-      "❌ Order creation failed:",
-      error.response.data || error.message
-    );
+    console.error("❌ Order creation failed:", error.response.data || error.message);
     return false;
   }
 };
 
-const processTransactions = async () => {
+const delhiveryOrderCron = new CronJob("*/1 * * * *", async () => {
   try {
-    console.log("🚀 Delhivery Order Cron Started!");
+    console.log("🚀 Delhivery Order Creation Cron Started");
+
     const transactions = await findTransactions({
       orderCreated: false,
       status: "PENDING",
     });
 
-    if (transactions.length === 0) return;
-    let wareHouse = await findWareHouse({});
-    if (wareHouse) {
-      for (const trx of transactions) {
-        if (
-          trx.paymentType === "COD" ||
-          (trx.paymentType === "Pre-Paid" && trx.paymentStatus === "COMPLETED")
-        ) {
-          let orderTitle = trx.products.map((p) => p.productTitle).join(", ");
+    if (!transactions.length) return;
 
-          let shippingObject = {
-            shipments: [
-              {
-                name: trx.address.name,
-                add: trx.address.address,
-                pin: trx.address.pinCode,
-                city: trx.address.city,
-                country: "India",
-                phone: trx.address.phone,
-                order: orderTitle,
-                payment_mode: trx.paymentType,
-                cod_amount: trx.paymentType === "COD" ? trx.amount : 0,
-                shipment_width: "10",
-                shipment_height: "15",
-                shipping_mode: "Express",
-              },
-            ],
-            pickup_location: {
-              name: wareHouse.name,
-              add: wareHouse.address,
-              city: wareHouse.city,
-              pin_code: wareHouse.pin,
-              country: wareHouse.country,
-              phone: wareHouse.phone,
-            },
-          };
+    const wareHouse = await findWareHouse({});
+    if (!wareHouse) {
+      console.warn("⚠️ No warehouse found");
+      return;
+    }
 
-          let wayBill = await fetchWayBill(trx.address.name);
-          if (wayBill) {
-            shippingObject.wayBill = wayBill;
-          }
+    for (const trx of transactions) {
+      const isCod = trx.paymentType === "COD";
+      const isPrePaid = trx.paymentType === "Pre-Paid" && trx.paymentStatus === "COMPLETED";
 
-          const orderCreated = await createDelhiveryOrder(shippingObject);
-          if (orderCreated) {
-            await updateTransaction(
-              { _id: trx._id },
-              { wayBill: wayBill, orderCreated: true }
-            );
-            for (let i = 0; i < trx.products.length; i++) {
-              let product = await findProduct({
-                _id: trx.products[i].productId,
-              });
-              if (product) {
-                let quantity = product.stock - trx.products[i].quantity;
-                await updateProduct(
-                  { _id: product._id },
-                  { quantity: quantity > 0 ? quantity : 0 }
-                );
-              }
-            }
-            console.log(
-              `✅ Order created successfully for Transaction ID: ${trx._id}`
-            );
-          }
-        }
+      if (!(isCod || isPrePaid)) continue;
+
+      const orderTitle = trx.products.map(p => p.productTitle).join(", ");
+
+      const wayBill = await fetchWayBill(trx.address.name);
+      if (!wayBill) {
+        console.warn(`⚠️ Skipping Transaction ${trx._id} - No Waybill`);
+        continue;
+      }
+
+      const shippingObject = {
+        shipments: [
+          {
+            name: trx.address.name,
+            add: trx.address.address,
+            pin: trx.address.pinCode,
+            city: trx.address.city,
+            country: "India",
+            phone: trx.address.phone,
+            order: orderTitle,
+            payment_mode: trx.paymentType,
+            cod_amount: isCod ? trx.amount : 0,
+            shipment_width: "10",
+            shipment_height: "15",
+            shipping_mode: "Express",
+            waybill: wayBill,
+          },
+        ],
+        pickup_location: {
+          name: wareHouse.name,
+          add: wareHouse.address,
+          city: wareHouse.city,
+          pin_code: wareHouse.pin,
+          country: wareHouse.country,
+          phone: wareHouse.phone,
+        },
+      };
+
+      const orderCreated = await createDelhiveryOrder(shippingObject);
+      if (orderCreated) {
+        await updateTransaction(
+          { _id: trx._id },
+          { wayBill, orderCreated: true }
+        );
+        console.log(`✅ Order created for Transaction ID: ${trx._id}`);
       }
     }
   } catch (error) {
-    console.error("❌ Error processing transactions:", error);
+    console.error("❌ Error processing orders:", error);
   }
-};
+});
 
-// Run the cron job every 10 seconds
-cron.schedule("*/10 * * * * *", processTransactions);
+delhiveryOrderCron.start();
