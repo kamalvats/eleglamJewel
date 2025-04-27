@@ -68,6 +68,7 @@ const delhiveryOrderCron = new CronJob("*/1 * * * *", async () => {
     const transactions = await findTransactions({
       orderCreated: false,
       status: "PENDING",
+      $or: [{ paymentType: "COD" }, { paymentType: "Pre-Paid", paymentStatus: "COMPLETED" }],
     });
 
     if (!transactions.length) return;
