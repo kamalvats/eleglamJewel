@@ -5,13 +5,13 @@
   "databaseHost": "127.0.0.1",
   "databasePort": "27017",
   "databaseName": "ecommerce",
-  "databasePass": "Vats1301",
+  "databasePass": "Ratna28",
   "jwtsecret": "nodejwt",
   "jwtresetsecret": "nodejwt",
  "nodemailer": {
     "service": "gmail",
-    "email": "mobiloitte.node@gmail.com",
-    "password": "wdbakhorlxmmqrhg"
+    "email": "eleglamjewel@gmail.com",
+    "password": "yqiraowkbspncuba"
   },
   "jwtOptions": {
     "expiresIn": "24h"
@@ -33,11 +33,11 @@
     }
   },
   "cloudinary": {
-    "cloud_name": "dx17mttye",
-    "api_key": "348828817168638",
-    "api_secret": "nn0OkIZb0cqIby7M117u9TacdJk"
+    "cloud_name": "dpuxzf0if",
+    "api_key": "531629849211739",
+    "api_secret": "eyInH11DHGphtYWef_Qlwr_AsHQ"
   },
-  "supportEmail":"support@stringarc8.io",
+  "supportEmail":"eleglamjewel@gmail.com",
   "razorPayKeyId":"rzp_test_9LiQfQNEYrcCXo",
   "razorPaySecret":"I4olwnQhcekfoAw6e9vuy650",
   "delhiverySecret":"c44268c7db21ca113aed20c43a2ae7d5ea216b01",
