@@ -205,13 +205,13 @@ module.exports = {
         <div class="container">
             <header>
                 <div style="display: flex; align-items: center; justify-content: center;">
-                    <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                    <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                         alt="Eleglam" width="70px" height="70px">
                     <h2 style="margin-bottom: 30px;">Eleglam</h2>
                 </div>
             </header>
             <h2> Sub-Admin Account Created Successfully</h2>
-        <p>Dear ${name},</p>
+        <p>Dear User,</p>
         
         <p> This is to inform you that a new sub-administrator account has been successfully created. Below are the details of the newly created sub-administrator account:</p>
         
@@ -221,7 +221,7 @@ module.exports = {
             <table style="width: 100%;">
                 <tr>
                     <td style="text-align: left;">Sub-Admin Name:</td>
-                    <td style="text-align: right;">${name}</td>
+                    <td style="text-align: right;">User</td>
 <br>
                 </tr>
                 <tr>
@@ -259,21 +259,10 @@ module.exports = {
         </div>
         <div>
             <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                    href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                    href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                 of email, Don’t want any more emails from Eleglam?<a
                 href="mailto:${supportEmail}"></a></p>
-            <footer>
-                      <footer>
-                <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/contact" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Contact Support</a>
-        </div>
-                  <p style="font-size:12px; color: #9e9c9c;">Shop No. 22/27, Poultry Market, Commerical Street, <br>Bangalore
-     </p> 
-                </footer>
- </p> 
-            </footer>
+            
         </div>
     </div>
 </body>
@@ -422,13 +411,13 @@ module.exports = {
         <div class="container">
             <header>
                 <div style="display: flex; align-items: center; justify-content: center;">
-                    <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                    <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                         alt="Eleglam" width="70px" height="70px">
                     <h2 style="margin-bottom: 30px;">Eleglam</h2>
                 </div>
             </header>
             <h2>Your Eleglam  Account Suspended.</h2>
-           <p> Dear ${name},</p>
+           <p> Dear User,</p>
             
            <p> We regret to inform you that your account on Eleglam has been blocked by our administrative team due to "${reason}".</p>
             
@@ -445,20 +434,11 @@ module.exports = {
             </div>
             <div>
             <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                    href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                    href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                 of email, Don’t want any more emails from Eleglam?<a
                 href="mailto:${supportEmail}"></a></p>
             
-                      <footer>
-                <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/contact" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Contact Support</a>
-        </div>
-                  <p style="font-size:12px; color: #9e9c9c;">Shop No. 22/27, Poultry Market, Commerical Street, <br>Bangalore
-     </p> 
-                </footer>
- </p> 
+                 </p> 
            
         
         </div>
@@ -607,14 +587,14 @@ module.exports = {
             <div class="container">
                 <header>
                     <div style="display: flex; align-items: center; justify-content: center;">
-                        <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                        <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                             alt="Eleglam" width="70px" height="70px">
                         <h2 style="margin-bottom: 30px;">Eleglam</h2>
                     </div>
                 </header>
            <h2>  Account Unblocked - Eleglam</h2>
 
-            <p>Dear ${name}</p>
+            <p>Dear User</p>
             
             <p> We're pleased to inform you that your account on Eleglam has been unblocked by our administrative team.</p>
             
@@ -635,11 +615,10 @@ module.exports = {
             </div>
             <div>
             <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                    href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                    href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                 of email, Don’t want any more emails from Eleglam?<a
                 href="mailto:${supportEmail}"></a></p>
-            <footer>
-                      <footer>
+            
                 <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
             <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
             <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
@@ -691,7 +670,6 @@ module.exports = {
           padding: 0;
           color: #fbf2f2;
       }
-
       .main-container {
           max-width: 600px;
 
@@ -800,14 +778,14 @@ module.exports = {
           <div class="container">
               <header>
                   <div style="display: flex; align-items: center; justify-content: center;">
-                      <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                      <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                           alt="Eleglam" width="70px" height="70px">
                       <h2 style="margin-bottom: 30px;">Eleglam</h2>
                   </div>
               </header>
               <h2>User Query for - Eleglam </h2>
               
-              <p>Dear ${name}👋</p>
+              <p>Dear User👋</p>
  <p>We're writing to inform you that there is a msg from ${userNames}.</p>
  <p>The user's query is provided below.</p>
  <p>${msg}</p>
@@ -821,21 +799,11 @@ module.exports = {
           </div>
           <div>
               <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                      href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                      href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                   of email, Don’t want any more emails from Eleglam?<a
                   href="mailto:${supportEmail}"></a></p>
-              <footer>
-                        <footer>
-                <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/contact" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Contact Support</a>
-        </div>
-                  <p style="font-size:12px; color: #9e9c9c;">Shop No. 22/27, Poultry Market, Commerical Street, <br>Bangalore
-     </p> 
-                </footer>
- </p> 
-              </footer>
+              
+               
           </div>
       </div>
   </body>
@@ -983,14 +951,14 @@ module.exports = {
           <div class="container">
               <header>
                   <div style="display: flex; align-items: center; justify-content: center;">
-                      <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                      <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                           alt="Eleglam" width="70px" height="70px">
                       <h2 style="margin-bottom: 30px;">Eleglam</h2>
                   </div>
               </header>
               <h2>User Query for - Eleglam </h2>
               
-              <p>Dear ${name}👋</p>
+              <p>Dear User👋</p>
  <p>We're writing to inform you send a query .</p>
  <p>Your query is : ${msg}</p>
  
@@ -1004,21 +972,10 @@ module.exports = {
           </div>
           <div>
               <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                      href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                      href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                   of email, Don’t want any more emails from Eleglam?<a
                   href="mailto:${supportEmail}"></a></p>
-              <footer>
-                        <footer>
-                <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/contact" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Contact Support</a>
-        </div>
-                  <p style="font-size:12px; color: #9e9c9c;">Shop No. 22/27, Poultry Market, Commerical Street, <br>Bangalore
-     </p> 
-                </footer>
- </p> 
-              </footer>
+            
           </div>
       </div>
   </body>
@@ -1166,14 +1123,14 @@ module.exports = {
           <div class="container">
               <header>
                   <div style="display: flex; align-items: center; justify-content: center;">
-                      <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                      <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                           alt="Eleglam" width="70px" height="70px">
                       <h2 style="margin-bottom: 30px;">Eleglam</h2>
                   </div>
               </header>
               <h2> Query Reply from Admin- Eleglam </h2>
               
-              <p>Dear ${name}👋</p>
+              <p>Dear User👋</p>
  <p>We're writing to inform you that there is a reply for you query .</p>
  <p>Reply for  : ${question}</p>
  <p> ${msg}</p>
@@ -1189,21 +1146,10 @@ module.exports = {
           </div>
           <div>
               <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                      href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                      href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                   of email, Don’t want any more emails from Eleglam?<a
                   href="mailto:${supportEmail}"></a></p>
-              <footer>
-                        <footer>
-                <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/contact" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Contact Support</a>
-        </div>
-                  <p style="font-size:12px; color: #9e9c9c;">Shop No. 22/27, Poultry Market, Commerical Street, <br>Bangalore
-     </p> 
-                </footer>
- </p> 
-              </footer>
+              
           </div>
       </div>
   </body>
@@ -1350,7 +1296,7 @@ module.exports = {
         <div class="container">
             <header>
                 <div style="display: flex; align-items: center; justify-content: center;">
-                    <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                    <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                         alt="Eleglam" width="70px" height="70px">
                     <h2 style="margin-bottom: 30px;">Eleglam</h2>
                 </div>
@@ -1375,21 +1321,10 @@ module.exports = {
             </div>
             <div>
             <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                    href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                    href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                 of email, Don’t want any more emails from Eleglam?<a
                 href="mailto:${supportEmail}"></a></p>
-            <footer>
-                      <footer>
-                <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/contact" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Contact Support</a>
-        </div>
-                  <p style="font-size:12px; color: #9e9c9c;">Shop No. 22/27, Poultry Market, Commerical Street, <br>Bangalore
-     </p> 
-                </footer>
- </p> 
-            </footer>
+           
         
         </div>
     </body>
@@ -1538,7 +1473,7 @@ module.exports = {
         <div class="container">
             <header>
                 <div style="display: flex; align-items: center; justify-content: center;">
-                    <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                    <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                         alt="Eleglam" width="70px" height="70px">
                     <h2 style="margin-bottom: 30px;">Eleglam</h2>
                 </div>
@@ -1563,21 +1498,10 @@ module.exports = {
             </div>
             <div>
             <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                    href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                    href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                 of email, Don’t want any more emails from Eleglam?<a
                 href="mailto:${supportEmail}"></a></p>
-            <footer>
-                      <footer>
-                <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/contact" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Contact Support</a>
-        </div>
-                  <p style="font-size:12px; color: #9e9c9c;">Shop No. 22/27, Poultry Market, Commerical Street, <br>Bangalore
-     </p> 
-                </footer>
- </p> 
-            </footer>
+            
         
         </div>
     </body>
@@ -1727,7 +1651,7 @@ module.exports = {
             <div class="container">
                 <header>
                     <div style="display: flex; align-items: center; justify-content: center;">
-                        <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                        <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                             alt="Eleglam" width="70px" height="70px">
                         <h2 style="margin-bottom: 30px;">Eleglam</h2>
                     </div>
@@ -1756,21 +1680,10 @@ module.exports = {
             </div>
             <div>
                 <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                        href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                        href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                     of email, Don’t want any more emails from Eleglam?<a
                     href="mailto:${supportEmail}"></a></p>
-                <footer>
-                          <footer>
-                <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/contact" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Contact Support</a>
-        </div>
-                  <p style="font-size:12px; color: #9e9c9c;">Shop No. 22/27, Poultry Market, Commerical Street, <br>Bangalore
-     </p> 
-                </footer>
- </p> 
-                </footer>
+               
             </div>
         </div>
     </body>
@@ -1924,14 +1837,14 @@ module.exports = {
                 <div class="container">
                     <header>
                         <div style="display: flex; align-items: center; justify-content: center;">
-                            <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                            <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                                 alt="Eleglam" width="70px" height="70px">
                             <h2 style="margin-bottom: 30px;">Eleglam</h2>
                         </div>
                     </header>
                     <h2>Email Verification Status Update - Eleglam </h2>
                     
-                    <p>Dear ${name}👋</p>
+                    <p>Dear User👋</p>
        <p>We're writing to inform you that the email verification status for your account on Eleglam  has been updated.</p>
                         <table style="width: 100%;">
                     <tr>
@@ -1957,21 +1870,10 @@ module.exports = {
                 </div>
                 <div>
                     <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                            href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                            href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                         of email, Don’t want any more emails from Eleglam?<a
                         href="mailto:${supportEmail}"></a></p>
-                    <footer>
-                              <footer>
-                    <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
-                <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
-                <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
-                <a href="https://arcadeproduct-next.mobiloitte.io/contact" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Contact Support</a>
-            </div>
-                      <p style="font-size:12px; color: #9e9c9c;">Shop No. 22/27, Poultry Market, Commerical Street, <br>Bangalore
-         </p> 
-                    </footer>
-     </p> 
-                    </footer>
+                   
                 </div>
             </div>
         </body>
@@ -2117,13 +2019,13 @@ module.exports = {
             <div class="container">
                 <header>
                     <div style="display: flex; align-items: center; justify-content: center;">
-                        <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                        <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                             alt="Eleglam" width="70px" height="70px">
                         <h2 style="margin-bottom: 30px;">Eleglam</h2>
                     </div>
                 </header>
                <h2> Welcome to Eleglam!</h2>
-<p>Dear ${name},</p>
+<p>Dear User,</p>
 
 <p>Welcome to Eleglam! We're thrilled to have you join our gaming community. Get ready for an exciting adventure filled with thrilling products, engaging challenges, and endless fun!</p>
 
@@ -2143,7 +2045,7 @@ module.exports = {
 
 <p>If you have any questions or need assistance, our support team is here to help. Feel free to reach out to us at support@Eleglam.com anytime.</p>
 
-<p>Once again, welcome aboard, ${name}! Get ready to unleash your gaming potential and embark on epic adventures with Eleglam</p>
+<p>Once again, welcome aboard, User! Get ready to unleash your gaming potential and embark on epic adventures with Eleglam</p>
 <div style="margin: 40px 0 50px;">
 
 </div>
@@ -2154,21 +2056,10 @@ module.exports = {
             </div>
             <div>
                 <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                        href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                        href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                     of email, Don’t want any more emails from Eleglam?<a
                     href="mailto:${supportEmail}"></a></p>
-                <footer>
-                          <footer>
-                <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/contact" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Contact Support</a>
-        </div>
-                  <p style="font-size:12px; color: #9e9c9c;">Shop No. 22/27, Poultry Market, Commerical Street, <br>Bangalore
-     </p> 
-                </footer>
- </p> 
-                </footer>
+                
             </div>
         </div>
     </body>
@@ -2316,13 +2207,13 @@ module.exports = {
         <div class="container">
             <header>
                 <div style="display: flex; align-items: center; justify-content: center;">
-                    <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                    <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                         alt="Eleglam" width="70px" height="70px">
                     <h2 style="margin-bottom: 30px;">Eleglam</h2>
                 </div>
             </header>
                <h2> Password Reset Successfully - Eleglam!</h2>
-             <p>   Dear ${name},</p>
+             <p>   Dear User,</p>
                 
              <p> We're writing to inform you that the password for your Eleglam account has been successfully reset. You can now log in using your new password and resume enjoying our products and features.</p>
                 
@@ -2341,21 +2232,10 @@ module.exports = {
             </div>
             <div>
                 <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                        href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                        href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                     of email, Don’t want any more emails from Eleglam?<a
                     href="mailto:${supportEmail}"></a></p>
-                <footer>
-                          <footer>
-                <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/contact" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Contact Support</a>
-        </div>
-                  <p style="font-size:12px; color: #9e9c9c;">Shop No. 22/27, Poultry Market, Commerical Street, <br>Bangalore
-     </p> 
-                </footer>
- </p> 
-                </footer>
+                
             </div>
         </div>
     </body>
@@ -2502,13 +2382,13 @@ module.exports = {
         <div class="container">
             <header>
                 <div style="display: flex; align-items: center; justify-content: center;">
-                    <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                    <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                         alt="Eleglam" width="70px" height="70px">
                     <h2 style="margin-bottom: 30px;">Eleglam</h2>
                 </div>
             </header>
                <h2> Password Change Successfully - Eleglam!</h2>
-             <p>   Dear ${name},</p>
+             <p>   Dear User,</p>
                 
              <p> We're writing to inform you that the password for your Eleglam account has been successfully changed. You can now log in using your new password and resume enjoying our products and features.</p>
                 
@@ -2527,21 +2407,10 @@ module.exports = {
             </div>
             <div>
                 <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                        href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                        href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                     of email, Don’t want any more emails from Eleglam?<a
                     href="mailto:${supportEmail}"></a></p>
-                <footer>
-                          <footer>
-                <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/contact" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Contact Support</a>
-        </div>
-                  <p style="font-size:12px; color: #9e9c9c;">Shop No. 22/27, Poultry Market, Commerical Street, <br>Bangalore
-     </p> 
-                </footer>
- </p> 
-                </footer>
+                
             </div>
         </div>
     </body>
@@ -2688,14 +2557,14 @@ module.exports = {
             <div class="container">
                 <header>
                     <div style="display: flex; align-items: center; justify-content: center;">
-                        <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                        <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                             alt="Eleglam" width="70px" height="70px">
                         <h2 style="margin-bottom: 30px;">Eleglam</h2>
                     </div>
                 </header>
                <h2> Google Authentication Verification</h2> 
                <h2>  Activated- Eleglam </h2>
-                <p>Dear ${name}👋</p>
+                <p>Dear User👋</p>
                 <p>To enhance the security of your account on STRING ARC, we have enabled Google Authentication. This additional layer of security helps protect your account from unauthorized access.</p>
                 
                 <p> To complete the setup process, please follow the instructions below:</p>
@@ -2719,21 +2588,10 @@ module.exports = {
             </div>
             <div>
                 <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                        href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                        href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                     of email, Don’t want any more emails from Eleglam?<a
                     href="mailto:${supportEmail}"></a></p>
-                <footer>
-                          <footer>
-                <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/contact" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Contact Support</a>
-        </div>
-                  <p style="font-size:12px; color: #9e9c9c;">Shop No. 22/27, Poultry Market, Commerical Street, <br>Bangalore
-     </p> 
-                </footer>
- </p> 
-                </footer>
+               
             </div>
         </div>
     </body>
@@ -2899,14 +2757,14 @@ module.exports = {
                 <div class="container">
                     <header>
                         <div style="display: flex; align-items: center; justify-content: center;">
-                            <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                            <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                                 alt="Eleglam" width="70px" height="70px">
                             <h2 style="margin-bottom: 30px;">Eleglam</h2>
                         </div>
                     </header>
                     <h2>Ticket Purchase Confirmation - </h2>
                     <h2>Eleglam</h2>
-                    <p>Dear ${name}👋</p>
+                    <p>Dear User👋</p>
                     <p>We're writing to confirm that your ticket purchase on Eleglam has been successfully processed</p>
                        <p> using your wallet funds. Below are the details of your purchase:</p>
                     
@@ -2950,21 +2808,10 @@ module.exports = {
                 </div>
                 <div>
                     <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                            href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                            href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                         of email, Don’t want any more emails from Eleglam?<a
                         href="mailto:${supportEmail}"></a></p>
-                    <footer>
-                              <footer>
-                <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/contact" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Contact Support</a>
-        </div>
-                  <p style="font-size:12px; color: #9e9c9c;">Shop No. 22/27, Poultry Market, Commerical Street, <br>Bangalore
-     </p> 
-                </footer>
- </p> 
-                    </footer>
+                   
                 </div>
             </div>
         </body>
@@ -3130,14 +2977,14 @@ module.exports = {
                     <div class="container">
                         <header>
                             <div style="display: flex; align-items: center; justify-content: center;">
-                                <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                                <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                                     alt="Eleglam" width="70px" height="70px">
                                 <h2 style="margin-bottom: 30px;">Eleglam</h2>
                             </div>
                         </header>
                         <h2> Withdrawal Request Confirmation -</h2> 
                                 <h2> Eleglam</h2>
-                                 <p>Dear ${name}👋</p>
+                                 <p>Dear User👋</p>
                                  <p> We're writing to confirm that your withdrawal request on Eleglam has been successfully processed. Below are the details of your withdrawal </p>
                               
             
@@ -3178,21 +3025,10 @@ module.exports = {
                     </div>
                     <div>
                         <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                                href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                                href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                             of email, Don’t want any more emails from Eleglam?<a
                             href="mailto:${supportEmail}"></a></p>
-                        <footer>
-                                  <footer>
-                <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/contact" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Contact Support</a>
-        </div>
-                  <p style="font-size:12px; color: #9e9c9c;">Shop No. 22/27, Poultry Market, Commerical Street, <br>Bangalore
-     </p> 
-                </footer>
- </p> 
-                        </footer>
+                        
                     </div>
                 </div>
             </body>
@@ -3358,14 +3194,14 @@ module.exports = {
                     <div class="container">
                         <header>
                             <div style="display: flex; align-items: center; justify-content: center;">
-                                <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                                <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                                     alt="Eleglam" width="70px" height="70px">
                                 <h2 style="margin-bottom: 30px;">Eleglam</h2>
                             </div>
                         </header>
                         <h2> Withdrawal Request  -</h2> 
                                 <h2> Eleglam</h2>
-                                 <p>Dear ${name}👋</p>
+                                 <p>Dear User👋</p>
                                  <p> We're writing to confirm that your withdrawal request on Eleglam has been in processing. Below are the details of your withdrawal </p>
                               
             
@@ -3406,21 +3242,10 @@ module.exports = {
                     </div>
                     <div>
                         <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                                href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                                href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                             of email, Don’t want any more emails from Eleglam?<a
                             href="mailto:${supportEmail}"></a></p>
-                        <footer>
-                                  <footer>
-                <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/contact" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Contact Support</a>
-        </div>
-                  <p style="font-size:12px; color: #9e9c9c;">Shop No. 22/27, Poultry Market, Commerical Street, <br>Bangalore
-     </p> 
-                </footer>
- </p> 
-                        </footer>
+                        
                     </div>
                 </div>
             </body>
@@ -3567,14 +3392,14 @@ module.exports = {
             <div class="container">
                 <header>
                     <div style="display: flex; align-items: center; justify-content: center;">
-                        <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                        <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                             alt="Eleglam" width="70px" height="70px">
                         <h2 style="margin-bottom: 30px;">Eleglam</h2>
                     </div>
                 </header>
                <h2> Withdrawal Request Rejected -</h2> 
                <h2> Eleglam</h2>
-                <p>Dear ${name}👋</p>
+                <p>Dear User👋</p>
                 <p> We're writing to confirm that your withdrawal request on Eleglam has been rejected. Below are the reason of your withdrawal rejection </p>
                 <p>Reason is :${reason}</p>
                 <p>If you have any questions or concerns regarding this withdrawal, please feel free to contact our support team at [Support Email]. We're here to assist you with any inquiries you may have.</p>
@@ -3590,21 +3415,10 @@ module.exports = {
             </div>
             <div>
                 <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                        href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                        href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                     of email, Don’t want any more emails from Eleglam?<a
                     href="mailto:${supportEmail}"></a></p>
-                <footer>
-                          <footer>
-                <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/contact" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Contact Support</a>
-        </div>
-                  <p style="font-size:12px; color: #9e9c9c;">Shop No. 22/27, Poultry Market, Commerical Street, <br>Bangalore
-     </p> 
-                </footer>
- </p> 
-                </footer>
+               
             </div>
         </div>
     </body>
@@ -3753,7 +3567,7 @@ module.exports = {
         <div class="container">
             <header>
                 <div style="display: flex; align-items: center; justify-content: center;">
-                    <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                    <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                         alt="Eleglam" width="70px" height="70px">
                     <h2 style="margin-bottom: 30px;">Eleglam</h2>
                 </div>
@@ -3778,21 +3592,10 @@ module.exports = {
             </div>
             <div>
             <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                    href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                    href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                 of email, Don’t want any more emails from Eleglam?<a
                 href="mailto:${supportEmail}"></a></p>
-            <footer>
-                      <footer>
-                <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/contact" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Contact Support</a>
-        </div>
-                  <p style="font-size:12px; color: #9e9c9c;">Shop No. 22/27, Poultry Market, Commerical Street, <br>Bangalore
-     </p> 
-                </footer>
- </p> 
-            </footer>
+           
         
         </div>
     </body>
@@ -3939,13 +3742,13 @@ module.exports = {
         <div class="container">
             <header>
                 <div style="display: flex; align-items: center; justify-content: center;">
-                    <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                    <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                         alt="Eleglam" width="70px" height="70px">
                     <h2 style="margin-bottom: 30px;">Eleglam</h2>
                 </div>
             </header>
             <h2>Your Eleglam  Account Permanent Suspended.</h2>
-           <p> Dear ${name},</p>
+           <p> Dear User,</p>
             
            <p> We regret to inform you that your account on Eleglam has been permanent blocked by our administrative team .</p>
             
@@ -3964,21 +3767,10 @@ module.exports = {
             </div>
             <div>
             <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                    href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                    href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                 of email, Don’t want any more emails from Eleglam?<a
                 href="mailto:${supportEmail}"></a></p>
-            <footer>
-                      <footer>
-                <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/contact" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Contact Support</a>
-        </div>
-                  <p style="font-size:12px; color: #9e9c9c;">Shop No. 22/27, Poultry Market, Commerical Street, <br>Bangalore
-     </p> 
-                </footer>
- </p> 
-            </footer>
+            
         
         </div>
     </body>
@@ -4127,13 +3919,13 @@ module.exports = {
             <div class="container">
                 <header>
                     <div style="display: flex; align-items: center; justify-content: center;">
-                        <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                        <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                             alt="Eleglam" width="70px" height="70px">
                         <h2 style="margin-bottom: 30px;">Eleglam</h2>
                     </div>
                 </header>
                <h2> Wallet Connected to Eleglam!</h2>
-<p>Dear ${name},</p>
+<p>Dear User,</p>
 
 <p>Your wallet  ${wallet} is connected with Eleglam!</p>
 
@@ -4166,21 +3958,10 @@ module.exports = {
             </div>
             <div>
                 <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                        href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                        href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                     of email, Don’t want any more emails from Eleglam?<a
                     href="mailto:${supportEmail}"></a></p>
-                <footer>
-                          <footer>
-                <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/contact" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Contact Support</a>
-        </div>
-                  <p style="font-size:12px; color: #9e9c9c;">Shop No. 22/27, Poultry Market, Commerical Street, <br>Bangalore
-     </p> 
-                </footer>
- </p> 
-                </footer>
+                
             </div>
         </div>
     </body>
@@ -4327,13 +4108,13 @@ module.exports = {
         <div class="container">
             <header>
                 <div style="display: flex; align-items: center; justify-content: center;">
-                    <img src="https://res.cloudinary.com/dvb5aqqja/image/upload/v1709621671/1709621670521_Group87_b6evxo.png"
+                    <img src="https://res.cloudinary.com/dpuxzf0if/image/upload/v1747761937/eg-logo_mfawnx.jpg"
                         alt="Eleglam" width="70px" height="70px">
                     <h2 style="margin-bottom: 30px;">Eleglam</h2>
                 </div>
             </header>
             <h2>Eleglam Login Activity Notification</h2>
-            <p>Dear ${name}</p>
+            <p>Dear User</p>
            <p> We're reaching out to inform you about recent login activity on your Eleglam account. Here are the details of the login activity:</p>
             
            <p>  Date and Time:   [Date and Time of Login]</p>
@@ -4366,22 +4147,10 @@ module.exports = {
             </div>
             <div>
             <p style="font-size:13px; color: #9e9c9c;">Questions or faq? Contact us at <a
-                    href="mailto:${supportEmail}">Support@abc.com</a>. If you'd rather not receive this kind
+                    href="mailto:${supportEmail}">${supportEmail}</a>. If you'd rather not receive this kind
                 of email, Don’t want any more emails from Eleglam?<a
                 href="mailto:${supportEmail}"></a></p>
-            <footer>
-                      <footer>
-                <div style="text-align: center; font-size:13px; color: #9e9c9c; margin-bottom: 10px;">
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?termsConditions" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Terms & Condition</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/static/about?privacyPolicy" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Privacy Policy</a> |
-            <a href="https://arcadeproduct-next.mobiloitte.io/contact" style="text-decoration: none; color: #9e9c9c; margin-right: 10px; margin-left: 10px;">Contact Support</a>
-        </div>
-                  <p style="font-size:12px; color: #9e9c9c;">Shop No. 22/27, Poultry Market, Commerical Street, <br>Bangalore
-     </p> 
-                </footer>
- </p> 
-            </footer>
-        
+            
         </div>
     </body>
     

@@ -11,7 +11,7 @@
  "nodemailer": {
     "service": "gmail",
     "email": "eleglamjewel@gmail.com",
-    "password": "yqiraowkbspncuba"
+    "password": "yvxhddnpyoqyyzxh"
   },
   "jwtOptions": {
     "expiresIn": "24h"
