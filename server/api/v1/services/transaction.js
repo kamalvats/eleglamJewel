@@ -1,6 +1,6 @@
 import transactionModel from "../../../models/transaction";
 import statuse, { ACTIVE } from "../../../enums/status";
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 const transactionServices = {
   createTransaction: async (insertObj) => {
     return await transactionModel.create(insertObj);
@@ -9,7 +9,10 @@ const transactionServices = {
     return await transactionModel.aggregate(insertObj);
   },
   getTransaction: async (obj) => {
-    return await transactionModel.findOne(obj).populate({path:"products.productId"}).populate({path:"userId"});
+    return await transactionModel
+      .findOne(obj)
+      .populate({ path: "products.productId" })
+      .populate({ path: "userId" });
   },
   transactionCount: async (obj) => {
     return await transactionModel.countDocuments(obj);
@@ -42,55 +45,57 @@ const transactionServices = {
     let query = [
       {
         $match: {
-          paymentStatus: { $ne: "FAILED" },
-        }
+          paymentStatus: { $nin: ["FAILED", "PENDING"] },
+        },
       },
       // Lookup for user data
       {
         $lookup: {
-          from: 'users',
-          localField: 'userId',
-          foreignField: '_id',
-          as: 'userData'
-        }
+          from: "users",
+          localField: "userId",
+          foreignField: "_id",
+          as: "userData",
+        },
       },
-      { $unwind: { path: '$userData', preserveNullAndEmptyArrays: true } },
-      
+      { $unwind: { path: "$userData", preserveNullAndEmptyArrays: true } },
+
       // Unwind products array to properly populate each product
-      { $unwind: { path: '$products', preserveNullAndEmptyArrays: true } },
-      
+      { $unwind: { path: "$products", preserveNullAndEmptyArrays: true } },
+
       // Lookup for product details
       {
         $lookup: {
-          from: 'products',
-          localField: 'products.productId',
-          foreignField: '_id',
-          as: 'products.productDetails'
-        }
+          from: "products",
+          localField: "products.productId",
+          foreignField: "_id",
+          as: "products.productDetails",
+        },
       },
-      { $unwind: { path: '$products.productDetails', preserveNullAndEmptyArrays: true } },
-      
+      {
+        $unwind: {
+          path: "$products.productDetails",
+          preserveNullAndEmptyArrays: true,
+        },
+      },
+
       // Group back to reconstruct the original document structure
       {
         $group: {
-          _id: '$_id',
-          root: { $first: '$$ROOT' },
-          products: { $push: '$products' }
-        }
+          _id: "$_id",
+          root: { $first: "$$ROOT" },
+          products: { $push: "$products" },
+        },
       },
-      
+
       // Replace root to merge the grouped data
       {
         $replaceRoot: {
           newRoot: {
-            $mergeObjects: [
-              '$root',
-              { products: '$products' }
-            ]
-          }
-        }
+            $mergeObjects: ["$root", { products: "$products" }],
+          },
+        },
       },
-      
+
       // Project the final fields
       {
         $project: {
@@ -100,15 +105,15 @@ const transactionServices = {
           updatedAt: 1,
           products: {
             $map: {
-              input: '$products',
-              as: 'product',
+              input: "$products",
+              as: "product",
               in: {
-                productId: '$$product.productId',
-                quantity: '$$product.quantity',
-                price: '$$product.price',
-                productDetails: '$$product.productDetails'
-              }
-            }
+                productId: "$$product.productId",
+                quantity: "$$product.quantity",
+                price: "$$product.price",
+                productDetails: "$$product.productDetails",
+              },
+            },
           },
           paymentStatus: 1,
           paymentType: 1,
@@ -120,43 +125,43 @@ const transactionServices = {
           userData: {
             _id: 1,
             email: 1,
-            name: 1
-          }
-        }
+            name: 1,
+          },
+        },
       },
-      { $sort: { createdAt: -1 } }
+      { $sort: { createdAt: -1 } },
     ];
 
     // Filter conditions
     if (userId) {
       query.push({
         $match: {
-          'userData._id': mongoose.Types.ObjectId(userId),
-        }
+          "userData._id": mongoose.Types.ObjectId(userId),
+        },
       });
     }
 
     if (paymentStatus) {
       query.push({
-        $match: { paymentStatus }
+        $match: { paymentStatus },
       });
     }
 
     if (paymentType) {
       query.push({
-        $match: { paymentType }
+        $match: { paymentType },
       });
     }
 
     if (deliveryStatus) {
       query.push({
-        $match: { deliveryStatus }
+        $match: { deliveryStatus },
       });
     }
 
     if (status) {
       query.push({
-        $match: { status }
+        $match: { status },
       });
     }
 
@@ -165,30 +170,32 @@ const transactionServices = {
       query.push({
         $match: {
           $or: [
-            { orderId: { $regex: search, $options: 'i' } },
-            { receipt: { $regex: search, $options: 'i' } },
-            { 'userData.email': { $regex: search, $options: 'i' } },
-            { 'userData.name': { $regex: search, $options: 'i' } },
-            { 'products.productDetails.name': { $regex: search, $options: 'i' } }
-          ]
-        }
+            { orderId: { $regex: search, $options: "i" } },
+            { receipt: { $regex: search, $options: "i" } },
+            { "userData.email": { $regex: search, $options: "i" } },
+            { "userData.name": { $regex: search, $options: "i" } },
+            {
+              "products.productDetails.name": { $regex: search, $options: "i" },
+            },
+          ],
+        },
       });
     }
 
     // Date filtering
     if (fromDate || toDate) {
       const dateFilter = {};
-      
+
       if (fromDate) {
         dateFilter.$gte = new Date(fromDate);
       }
-      
+
       if (toDate) {
         dateFilter.$lte = new Date(new Date(toDate).setHours(23, 59, 59, 999));
       }
-      
+
       query.push({
-        $match: { createdAt: dateFilter }
+        $match: { createdAt: dateFilter },
       });
     }
 
