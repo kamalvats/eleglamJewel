@@ -128,6 +128,7 @@ const transactionServices = {
           orderCreated: 1,
           address: 1,
           deliveryStatus: 1,
+          wayBill: 1,
           userData: {
             _id: 1,
             email: 1,
