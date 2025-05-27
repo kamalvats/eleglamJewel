@@ -45,7 +45,13 @@ const transactionServices = {
     let query = [
       {
         $match: {
-          paymentStatus: { $nin: ["FAILED", "PENDING"] },
+          $expr: {
+            $cond: [
+              { $eq: ["$paymentType", "Pre-Paid"] },
+              { $not: { $in: ["$paymentStatus", ["FAILED", "PENDING"]] } },
+              true, // Always true if not "Pre-Paid"
+            ],
+          },
         },
       },
       // Lookup for user data
